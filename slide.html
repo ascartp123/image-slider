@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #outer {
+        width: 100%;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #main {
+        width: 500px;
+        height: 300px;
+        overflow: hidden;
+        display: flex;
+        position: relative;
+       
+      }
+
+      .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+      }
+      button {
+        width: 100px;
+        height: 30px;
+        color: black;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-size: 15px;
+        background-color: aqua;
+        border-radius: 5px;
+      }
+      button:hover {
+        background-color: rgb(12, 135, 100);
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 0 10px 0.5px rgb(13, 180, 231);
+      }
+      img {
+        width: 500px;
+
+      }
+      .images {
+        display: flex;
+        transition: 0.5s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="outer">
+      <div id="main">
+        <div class="images">
+          <img
+            src="https://www.w3schools.com/howto/img_nature_wide.jpg"
+            alt=""
+          />
+          <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="" />
+          <img
+            src="https://www.w3schools.com/howto/img_mountains_wide.jpg"
+            alt=""
+          />
+          <img
+            src="https://www.w3schools.com/howto/img_lights_wide.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <div class="btn">
+      <button id="prev">Previous</button>
+      <button id="next">Next</button>
+    </div>
+  </body>
+  <script>
+    let images = document.querySelector(".images");
+    let prev = document.getElementById("prev");
+    let next = document.getElementById("next");
+    let img = document.querySelectorAll(".images img");
+
+    let index = 0;
+    let imgwidth = 500;
+    next.addEventListener("click", function () {
+      index++;
+      if (index > img.length - 1) {
+        index = 0;
+      }
+      images.style.transform = `translateX(${-index * imgwidth}px)`;
+    });
+    prev.addEventListener("click", function () {
+      index--;
+      if (index < 0) {
+        index = img.length - 1;
+        index = 0;
+      }
+      images.style.transform = `translateX(${-index * imgwidth}px)`;
+    });
+  </script>
+</html>
